@@ -1,0 +1,225 @@
+Acesta este documentul in care urmeaza sa prezint modul in care am rezolvat 
+cele 4 exercitii.
+
+EXERCITIUL 1 : Functia baza are ca scop convertirea unui numar salvat ca si
+string dintr-o baza b1 intr o alta baza b2. De asemenea numarul in baza
+b2 va fi returnat tot ca un sir de caractere. Ideea de baza pe care
+m am bazat in rezolvarea acestui exercitiu a fost transformarea intr-o
+baza intermediara si anume baza 10 . Dupa care din baza 10 am transformat
+in baza b2 cu ajutorul algoritmului bine.stiut. Inainte sa incep transforma
+rile am verificat daca numarul pe care eu trebuie sa il transform este
+in conformitate cu baza care imi este ceruta . Adica verific
+daca toate literele din sirul de caractere sunt mai mici strict decat
+baza b1 ( resepctiv daca sunt litere numarul corespunzator trebuie sa 
+fie mai mic decat baza in cauza). Pentru inceput incep conversia in 
+baza 10 . Cu un for parcurg elementele sirului de caractere , adica 
+numarul ce trebuie transfoarmat si de fiecare data pentru fiecare 
+element cu ajutorul unui for caut ce numar este corespunzator pentru
+caracterul respectiv ( in vector am salvate toate caracterele pana )
+la t inclusiv si numarul corespunzator este pozitia fiecarui
+caracter in vector minus 1 . DUpa care am inceput conversia numarului
+in baza 10 . Aceasta se realizeaza inmultint fiecare cifra a numar
+rului in baza b1 cu baza ridicata la putere "numarul de elemente"
+de dupa el . Acest numar ar putea fi prea mare la un moment dat
+pentru a fi stocat intr o variabila asa ca am ales folosirea
+unui sir de caractere pentru a stoca numarul in baza 10. Astfel
+in bzece de fiecare data cifra inmultita cu baza ridicata la pu
+terea numarul de cifre pana la final . Dar inainte fac conversia
+dupa cum am spus in baza corespunzatoarea . Numerele mari care sunt 
+stocate in vectori au urmatoarea structura . Pe prima pozitie 
+este stocata numarul de cifre ale numarului . Adica pe poztia 1
+va fi 1 daca inca nu am bagat niciun numar sau 2 daca acesta are 
+o singura cifra si tot asa . De remarcat faptul ca in aceste numere
+Numerele sunt stocate in ordine inversa , adica mai intai este 
+cifra unitatilor , cifra zecilor .... si asa mai departe. odata 
+facuta conversia numaruluica vetor putem realiza suma dintre vectorul 
+meu bzece in care este stocata valoarea acestuia in baza 10 si 
+partea ce trebuie adunata despre care tocmai am discutat. Inainte
+sa incepem adunarea acestea trebuie sa aibe acelasi numar de 
+cifre pentru ca algoritmul sa functioneze asa ca le elgalam 
+numarul de pe pozitia 1 si de asemenea pe celulele din vector ce vor
+fi adaugate vom pune zerouri . Odata aduse la aceeasi forma 
+Adunam cele doua numere . Astfel repetam toate aceasta operatie
+pana cand ajungem la finalul sirului de caractere. Odata avut numarul
+in baza zece trebuie doar sa ii mai facem conversia in baza ceruta . Astfel
+cu ajutorul unui while vom efectua operatii pana cand numarul devine
+0 si realizam coversia dupa metoda clasica . Pentru inceput aflam
+restul imapartirii numarului la baza b2 , dupa care adaugam pe pozitia
+corespunzatoare cifra/litera potrivita . Dujpa ce am adaugat
+litera/cifra potrivita ,numarul stocat in bzece va fi egal
+cu catul impartirii acestuia la baza b2 . Astfel repetam aceste
+operatiuni pana cand numarul va fi egall cu 0 . Dupa ce am iesit din 
+while avem stocat numarul in sirul de caractere 'sir' dar acesta este in
+ordine inversa . Astfel cu un for de la coada la cap . salvam
+numarul determinat in ordinea corecta in vairabila in care trebuie
+sa returnam rezultatul adica in r.
+
+
+
+EXERCITIUL 2 : LA acest exercitiu antetul este exact asa cum este
+cerut in cerinta. Analizand problema am obersvat faptul ca pe fiecare
+subdiagonala secundara ca sa o numesc asa indicii elementelor sunt
+egali si daca sunt pari elementele dun in ordine crescatoare de sus
+in jos si daca suma indicilor este impara elementle sunt in ordine descresca
+toare de sus in jos . Astfel suma indicilor ia valori de la 0 la
+2n . Cu un for parcurg fiecare suma , adica practic trec prin fiecare
+subdiagonala . Si verific pentru inceput daca suma indicilor este para
+asta inseamna ca elementele trebuie sa urce de jos in sus
+adica sa fie in rodine crescatoare, SI cu doua foruri determin indicii care
+insumati sa dea suma s dar nu ii parcurg oricum i ul nu ia valori
+de la 1 la n cum ar fi normal ci de la n la u pentru ca atunci
+cand pun elementele pe pozitile corespunzatoare sa le pun si in rodine
+crescatoare , sa nu le mai sortez dupa . Dupa care trec la urmatatorul
+numar , adica incrementez variabila count care creste din unu in unu
+de fiecare data cand mai pun un elemetn la locul potrivit . 
+Daca suma indicilor este impara , de asemenea determin din nou indicii
+care insumat sa dea suma s dar de data acesatsta i ul creste nromal
+iar j ul ia valori de la n la i pentru a le pune in ordine descrescatoare
+de jos in sus , adica in ordine crescatoare de sus in jos . SI de asemenea
+incrementez variabila count cu unu pentru ca metoda sa functioneze . La final
+salvez in variabila Z matricea zigzag dorita.
+
+
+EXERCITIUL 3. Functia morse () nu are parametrii si returneaza in variaibla
+arborele M corespunzator codului morse din enunt .  Functia morse_decode respecta antetul cerut in enunt si este o metoda de determinare
+a caracterului corespunztor iterativa ,astfel la inceput verific
+daca sirul este nevid , adica am ce sa decodez , daca da incep 
+sa ma plimb prin arborele meu pana gasesc litera corspunztore asta in 
+cazul in care o gasesc . Si astfel Daca am punct ma duc in stanga
+daca am unde sa ma duc avasnez si astpe sa se termine sirul daca nu
+asta inseamna ca nu este un vod valid ce am primit eu ca parametru
+si ca oricum nu am ce sa caut . Asa ca intreru iteratia cu un break
+dar salvez inainte in varaibile cursor caracterul * semn ca
+nu este un cod valid , ce am primit eu . Daca am bara procedez
+similar doar ca ma duc in partea dreapta si caut , astfel daca 
+am unde sa ma duc avansez si astept ca sirul sa ajunga la final
+daca nu asta inseamna ca deja nu mai am ce sa caut si paraesc forul 
+cu ajutorul unui break dar inainte salvez in variabila cursor '*'.
+La final daca nu am intalnit niciun caz de nedeterminare si sirul
+a luat sfarsit in vairaiba cursor pe prima celula este salvata exact
+litera corespunzatoare codului care se afla in sirul primit ca parametru.
+Functia morse_encode este una iterativa si se bazeaza pe urmatorul principiu. Eu parcurc arborele de fiecare daca pana ajung la o frunza
+La fiecare pas verific daca nu cumva acela este elementul daca da paraesc
+while ul si salvez in x sirul corespunzator daca nu ma duc catde mult
+pot in stang dupa daca nu mai pot merge in stanga merg in dreapta si tot 
+asa . De fiecare data cand ajung pe o frunza inseamna ca aceasta nu e element
+ul cautat si o sterg din arbore . Si pornesc din nou cautarea . Practic
+eu sterg elemente din arbore pana cand acesta va fi vid caz in care
+arb variabila mea va fi goala si inseamna ca nu se afla in arbore caracterul
+dorit sau pana cand inalnesc in drumul meu variabila , caz in care paraesc
+while ul dar nu inainte de a salva in x sirul de caractere corespunzatorul
+codului morse pentru litera respectiva. Functia multiple_encode 
+parcurge elemetnele sirului dat ca parametru si le converteste cu ajutorul
+functiei morse_encode , rand pe rand de asemenea le pune in vectorul de stringuri dorit cu spatiu intre ele pentru a se diferentia . Functia 
+multiple_decode . Parcurge sirul pana la final si de fiecare
+data cand intalneste in spatiu decoficia toate caracterele de la ultimul
+spatiu ( sau de la inceput ) si pana la spatiul curent cu ajutorul
+functiei morse encode si alipeste la sir litera descoperati sau 
+steluta daca nu este o codificare valida. La final salvez si ultma 
+litera codificata . Iar in cazul in care nu am niciun caracter in sirul
+dat ca parametru returnez caracterul '*'.
+
+
+EXERCITIUL 4: Exercitiul 4 respecta antetul cerut in cerinta . O sa explic
+ mai intai modul de functionare al jocului in sine, cum am gandit eu
+ mutarile si cum sa contracareze mutarile adversarului. Principala miscare pe 
+ care
+ trebuie sa o faca calculatorul este sa puna in mijloc , deoarece este pozitia
+ cu ajutorul careia daca ai ocupat o poti castiga cel mai usor , sau poti
+ face cel putin egal . Astfel jucatorul alege sa puna el al doilea ( adica
+ alege sa joace cu 0 ) Calculatorul va muta pe pozitia din mijloc , altfel
+ daca jucatorul muta primul verific daca pozitia din mijloc este libera , 
+ si pun acolo . Altfel verific daca exista vreo posibilitate sa castig ,
+ si caut toate combinatiile pe linii sau pe coloane sau pe una din diagonale
+ daca sunt 2 elemente de acelasi tip astfel inca eu sa pun langa sau
+ intre ele si sa castig ( eu fiind calcuatorul ) , astfel apelez functii
+ si daca gasesc sa castig , pun pe pozitia castigatoare si marchez
+ cu un sw faptul ca pentru aceasta runda am terminat , defapt acesta este 
+ modul de functionare al jocului , atunci cand trebuie sa mute calculatorul
+ si inn fcuntie de prioritatea cautarii unei pozitii marchez cand am gasit o
+ astfel prioritatille sunt urmatoarele : sa castig ( eu calculatorul ) ,
+ altfel daca nu este nicio posibilitate sa castig , nu am o formula castig,
+ toare , incerc sa blochez o eventuala vicctorie a jucatorului real
+ si caut de asemenea daca acesta are pe linii , pe coloane ,
+ sau pe una din diagonale , o formatie castigatoar e, si daca are
+ il blochez . De asemenea un alt caz particular pe care l am luat in vedere
+ este acela cand jucatorul are 2 mutari in colturi ale table , in colturi
+ opuse si , iar acesta daca va pune intr-un al treila va castiga automat.
+ Eu previn acest caz incercand sa castig eu inaintea lui. Astfel, daca
+ el incearca sa aplice aceasta metoda de a castiga eu o sa imi
+ formez pe coloana din mijloc 2 piese , iar acesta daca nu vrea sa piarda
+ nu are de ales si trebuie sa ma blocheze totodata si nu are cum sa castige.
+ Un alt caz pe care l am luat in considerare este acela cand 
+ nu am nici eu formatie castigatoare nu are nici el si nici nu a pus
+ in coltiuri diagonal opuse , in acest caz cea mai buna mmutare pe care
+ o poate efectua calculatorul este sa puna in unul din colturi , pentru
+ a forma o ulterioara formatie castigaatoare, iar daca colturile sunt ocupate
+ si nici nu am vreo metoda sa castig sau sa il impiedic pe c
+ celalalt jucator sa castige , pun pe prima pozitie liberea de la stanga 
+ la dreapta si de jos in sus. La finalul fiecarui pas dintr-un meci 
+ verific daca cineva ( calclatorul sau jucatorul ) a obitnui o mutare
+ castigatoare pentru a parasi functia deoarece jocul nu mai are rost 
+ sa continue . Afisez de asemenea un mesaj , anuntand cine este castigatorul
+ De asemenea , se paraseste bucla while a unui joc dupa 5 runde ale unei
+ partide deoarece s-au eliberat toate pozitiile de a muta si este egalitate
+ iar jocul a luat sfarist . Acest lucru este posibil cu ajutorul unei 
+ variabile nr pe care o incrementez mereu de la 5 inainte sa inceapa
+ un meci si pe care o decrementez cu unu la fiecare pas dintr un meci.
+ Daca meciul a luat sfarsit afisez un mesaj privind scorul partidelor
+ indiferent ca a castigat sau nu cineva ultima runda , de asemenea
+ refac tabla de jos cu pozitiile valorile 1 2 3 ..9 pentru ca jucatorul
+sa mai poata juca inca un meci , asta in cazul in care doreste . 
+	Dupa ce se reface talba de joc , jucatorul este intrebat daca doreste 
+	sau nu sa mai joace un meci si daca da nu , ii este afisat un mesaj
+privind modul de functionare al jocului , si ca daca doreste sa iasa
+este posibila o simpla apasare a tastei q urmata de enter , si el
+va parasi jocul orinde s-ar afla . Astfel el indiferent ca se afla 
+la o mutare sau la alegerea unor optiuni pentru joc , doar apasand 
+tasta q poate parasi jocul . La deschiderea jocului acesta este 
+intampinat cu un mesaj de venire , dupa care este interogat daca doreste
+sa se jooace sau nu , in cazul in care apasa da acestui ii va fi afisata
+intrebarea cu ce doreste sa joace urmatorul meci cu x sau cu 0 . Daca acesta apasa x va juca cu x daca joaca 0 va juca cu 0 , iar daca apsa orice 
+altceva in afara de x sau 0 va juca tot cu 0 , acesta trebuie sa isi
+asume riscul pentru ca nu a fost atent si va pune al doilea. Regula jocului
+este cea indicata pe forum , adica cel care joaca cu X va incepe mereu primul
+astfel asa am implementat si eu jocul . Daca juactorul a apasat da si
+si a ales si mutarea jocul poate incepe . Odata inceputa o partida acesta
+esste rugat sa introduca mutarea . Tabla este afisata sub forma de matrice
+de numere de la 1 la 9 , pentru ai fi mai usor sa introduca o pozitie
+jucatorului ( fara indici ) , iar de fiecare data cand trebuie sa introduca
+o noua mutare ii este afisata inainte tabla , cu mutarile pe care le 
+a facut si sunt marcate cu x sau cu 0 ( in functie de cu ce joaca ) si mutari
+le pe care calculatorul le-a facut . Iar acesta trebuie sa aleaga
+o casuta unde nu se afla x sau 0 . In cazul in care acesta incearca 
+sa introduca o mutare care nu este valida adica pe care se afla
+deja pus ceva , sau in loc de o cifra introduce 2 de exemplu in loc de 2
+apsa 22 , jocul nu avanseaza , iar jucatorul este informat ca nu 
+a introdus cum trebuie mutarea , astfel pana nu introduce o variabila 
+valida de la 1 la 9 care nu este deja ocupata , sau nu a apasat
+q in cazul in care doreste sa paraseasca functia , mutarea nu se va efectua
+acest lucru este obligatoriu pentru ca jocul sa functioneze cum trebuie .
+Odata introdusa o mutare valida , se schimba matricea tablea
+care retine pozitiile goale si cele ocupate din tabela , si se trece
+la cautarea pe care am explicat o mai sus a unei poziti favorabile 
+pentru calculator . Pentru mutare am creat 6 functii care cauta pe rand
+pe linii coloane si diagonale a unor mutari castigatoare pentru calculator
+( pentru a castiga ) , sau pentru jucator ( pentru a impiedica victoria 
+acestuia) . Cu un sw pe care il initializez cu 0 mereu , marchez 
+momentul cand calculatorul a efectuat deja o mutare . De asemenea
+in codul jocul mai este prezenta o functia care afiseaza intr-un mod
+interactiv tabla de jos , cu pozitiile ocupate si cele libere. Aceasta
+functia este foarte ajutatoare deoarece doar cu ajutorul functiei mele
+tabela in care retin mutarile nu as putea face acest lucru 
+deoare acolo sunt prezente si valori de 0 si -1 , Astfel functia are
+initial valorile 1 2 3 ..9 (indicii mutarilor ) si daca vede in 
+matricea tabela , o valoare de 0 sau -1 cand se afiseaza la ecran
+pentru 0 se afiseaza 0 si pentru -1 se afiseaza x pentru a putea
+urmari mai usor .  De asemenea daca atunci cand utilizatorul este itreat
+daca vrea sa joace si trebuie sa raspunda cu da sau nu , daca apasa nu
+ii este afisat un mesaj cu eventuale comenzi pe care le poate afisa , iar 
+daca apasa da intra in joc , in cazul in care apasa orice altceva jocul 
+nu incepe pana cand acesta nu tasteaza corect da , astfel este
+afisat scorul curent indiferent ac a jucat sau nu vreoun meci si este 
+intrebat din noua daca doreste sa joace sau nu . Pe tot parcursul jocului
+oricand doreste , poate iesi din joc prin apasarea tastei 'q' urmata de enter.
+

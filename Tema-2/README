@@ -1,0 +1,134 @@
+Cerinta 1 : Valorile pentru primele doua polinoame sunt egale
+ cu : P(1) = 1 si P(2) = d(1)- lambda. Inainte de a incepe 
+ sa calculam valoarea pentru restul polinoamelor trebuie sa aflam
+ dimensiunea matricii ( care va fi egala cu lungimea vectorului
+ d) . Pentru ca rezultatul sa fie corect 
+ trebuie sa adaugam adaugam la inceptutul vectrului d si la ince
+ putul vectorului s cate un 0 . Dupa care
+ cu un for de la 3 la n+1 calculam valorile polinoamelor
+ cu ajutprul formulei P(i) = (d(i) - lamba) *P(i-1) - s(i-1) *
+ s(i-1) *P(i-2) .Unde d este diagonala principala iar
+ s esste supradiagonala matricei tridiagonale simetrice.
+ 
+
+Cerinta 2: Functia NrValProprii Initializam la inceputul functiei 
+numvp cu 0. SI aflam lungimea lui d , pe care o stocam in varriaibla
+n ( n = length(d) ) . Inainte de a incepe iteratiile calculam
+valorile polinoamelor cu ajutorul functiei create la exercitiul anterior
+("ValoriPolinoame"). Astfel de la 1 pana la n calculam numarul
+de valori astfel : Daca P(i) este deiferit de 0 comparam semnul 
+lui P(i) cu semnul lu P(i+1) si daca sunt diferite 
+incrementam numvp cu 1 . Altfel daca P(i) este 0 comparam semnul lui P(i+1)
+cu semnul lui P(i-1) si pentru a icnrementa numvp acestea doua trebuie
+sa fie egale .
+
+Cerinta 3: Functia LImiteValProprii calculeaza limita inferioara si limitea
+superioada intre care sunt cuprinse toate valorile proprii 
+ale matricii tridiagonale simetrice ( cu diagonala d si supra
+diagonala s). Pentru rezolvarea acestei cerinte ne vom folosi
+de teorema lui Gershgorin enuntata in sectiunea Descriere Generala.
+Vom calcula pe rand minimul iar mai apoi maximul . Minimul inainte
+sa incepem sa il calculam il initializam cu infinit ( pentru a 
+fi siguri ca o sa il gaism , de aceea pornim de la o valoare
+foarte mica ) . La fiecare pas calculam t(i) care este suma elementelor
+de pe linie , mai putin diagonala principala ( modulul lor ) . Iar minimul , va fi valoarea minima dintre fiecare diferenta d(i) - t(i) , cu 
+t(i) calculat pentru fiecare pas . 
+	Maximul inainte sa incepem sa il calculam il inializam cu minus infinit 
+(pornim de la o valoare foarte mica , pentru a fi siguri ca o sa 
+gasim solutia corecta ) . La fiecare pas calcula t(i) , la fel 
+ca pentru minim , doar ca valoarea maixima va fi egala cu maximul
+dintre d(i) si t(i) , cu t(i) calculat la fiecare pas , cu formula
+enuntata mai sus . 
+
+Cerinta 4: Functia IntervaleValProprii calculeaza toate intervalele
+intre care se afla valorile proprii ale matricei tridiagonale simetrice
+A.
+Verificam daca m este mai mare decat lungimea lui d , daca da
+atunci m va fi egala cu lungimea lui d.  primul si ultimul 
+numar din cadrul acestui vector de inteervale , va fi egala
+cu limita superiara si limita inferioara , pe care le putem calcula
+cu ajutprul functiei pe care am implementat o la cerinta 3 .asa ca 
+r(1) = limita inferioara si r(m+2) = limita superioara. Dupa care
+am parcurs fieacare pas din indicatie , pasi pe care i am explicat
+si in doul sursa al functiei . Noi avem m+2 valori dar avem nevoie 
+doar de m+1 asa ca in finalul functiei stergem ultima valoare pentru ca 
+rezultatul sa fie corect.
+
+Cerinta 5 : Functia CalculezValProprii care calculeaza cu o anumia
+precizie cele mai mici m valori proprii ale unei matrici
+tridiagonale simetrice . Toleranta tol este daca ca parmetru
+de asemenea sunt date si diagonala principala d si 
+supradiagonala s, dar si m : limita pentru numarul de valori proprii.
+Mai intai apelez functia pentru a gasi intevalele intre care se afla
+fiecare valoare proprie in parte . Astfel in vectorul de invervale
+vor fi m+1 valori pentru m intervale , asa ca voi parcurge elementele
+vectorului de la 1 pana la m pentru a verifica fiecare iterval
+dupa care aplic metoda bisectiei pentru fiecare interval in parte , 
+in a si b voi retine capetele intervalului de fiecare data , iar in c
+va fi mijlocul intervalului la fiecare pas , conditia de ooprire
+din metoda bisectiei este atunci cand diferenta dintre b ( marginea
+superioara) si a este mai mica decat toleranta , adica cat timp
+nu este indeplinita aceasta conditie , tot micsorez intervalul .
+Pentru a vedea in ce parte incep sa caut , daca ma duc mai sus sau mai joc
+in interval , adica momentul cand initializez a sau b cu c
+cu alte cuvinte restrangerea intervalului , pe care trebuie sa o fac
+la fiecare pas se efectueaza altfel : verific cu ajutorul functiei
+NrValProprii , iar ca valoare proprie iau c , astfel daca sunt 
+i valori proprii , unde i indiceledin for , ma duc in jos , adica
+b va fi egal cu ce , altfel a va fi egal cu c ( in program este testata
+mai intai conditia ca sa fie incrementat cu c , adica numarul
+sa fie mai mic decat i ). La final-ul forului fiecare element
+din vectorul p(i) va fi initializat cu c, valoare proprie gasita.
+
+Cerinta 6 : PutereInv.m : Functia PutereInv are ca rezultat pentru 
+date de intreare corespunzatoare o un vector propriu si o valoare
+proprie corespunzatoare . Acesats functie primeste ca parametrii 
+diagonala principala d si supradiagonala matricei tridiagonale simetrice
+un vector y care reprezinta aproximarea initiala a vectorului proprii
+h deplasarea , necesara in metoda puterii inverse , maxIter 
+ce reprezinta numarul maxim de iteratii pe care il vom efectua , si 
+tol care reprezinta precizia cu care vom efectua calculele . L ainceputul
+programului vom salva in variabilele dd si ss valorile initale ale
+vectorilor d si s , deoarece pe parcursul programului valorile acestora
+vor fi modificate , si doresc sa am mereu valorile intiiale pe care le
+am primit ca parametru . Dupa care in variabillele aa bb si cc
+vom tine cele trei diagonale ale matricei , chiar daca supra
+si dubdiagonala principala , pentru a facilita intelegerea programului
+acestea vor avea denumiri diferite , de asemenea vom adauga un zero
+la inceputul vectorului aa , pentru a ne usura calculele , si sa nu mai 
+fie necesara , sa punem in program anumite condititii , cu alte 
+cuvinte pentru a lucra mai usor cu indicii. In L voi stoca pe tot
+parcursul programului valoarea proprie la fiecare pas , acest 
+L il initalizez cu 0 inceinte de inceperea programului . La fiecare pas
+calculez mai intai diferenta A-In*miu , cu alte cuvinte aceasta
+diferenta de matrici modifica doar diagonala principala a matricei
+A a carei valori proprii doresc sa o aflu , deci vom modifica doar
+vectorul b in care sunt stocate valorile de pe diagonala principala
+Pentur a fi mai suor de inteles la fiecare pas in a b c voi tine
+valorile diagonalelor matricei a , este necesar sa intializam 
+la fiecare pas acesti vectori cu valorile intiale deoarece , 
+acestea se modifica atunci cand vacem diferenta cu In .  Odata ce
+avem si valoarea corespunzatoare pentru b , aplicam metoda Thomas
+pentru a afla valoarea lui z , unde z=(A-In*miu)^-1 *y, astfel 
+in d voi tine y , care ar fi "rezultatul sistemului meu de ecuatii"
+iar necunoscuta va fi z. Astfel dupa aplicarea metodei Thomas ,
+am stocata in vectorul z rezultatul dorit. y va fi egal
+cu vectoru z impartit la norma sa . Acum ce ne mai ramane de facut este
+sa aflam valoarea proprie corepzunatoare care este egala cu
+L = t' A * t , cum nu avem voie sa construim matricea , 
+initial com salva intr un vector auxiliar denumit aux rezultatuk
+dintre t' * A ( t transpus si A ) , dupa care vom inmulti acest
+vector Aux cu t pentru a obtine rezultatul valorii proprii. De asmenea
+la fiecare pas incrementam si deplasarea cu L conform metodei 
+puterii inverse. Ce ne mai ramane de facut la fiecare pas
+este sa aflam valoarea vectorului A*vecp - valp*vecp , acest vectoru
+obitnumit in urma calculelor de mai sus , ne spune atunci cand trebuie
+sa ne oprim deoarece precizia este destul de buna , astfel Vom 
+incrementa cu 0 vectorul aux , si vom "simula " inmultirea dintre
+matricea A si vecp dupa care vom scadea vectorul propriu inmultit cu 
+valoarea proprie . Daca acest vector aux obtinumit conform formulei
+din enunt are norma mai mica decat toleranta , inseamna ca rezultatul
+a fost gasit si ne putem opri din cautat. In finalul programului
+incrementam valp si vecp valorile corespunzatoare pentru valoarea proprie
+si respectiv vectorul propriu dorit.
+
